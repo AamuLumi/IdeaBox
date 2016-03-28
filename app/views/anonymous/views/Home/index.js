@@ -14,11 +14,17 @@ export default class Home extends Component {
         </div>
         <div className="buttonPanel">
           <div className="row">
-            <Link className="btn btn-raised btn-lg" to="/">Plus d'informations</Link>
+            <Link className="btn btn-raised btn-lg" to="/">
+              Plus d'informations
+            </Link>
           </div>
           <div className="row">
-            <Link className="btn btn-raised btn-lg" to="/">Donner une idée</Link>
-            <Link className="btn btn-raised btn-lg" to="search">Rechercher une idée</Link>
+            <Link className="btn btn-raised btn-lg" to="/">
+              Donner une idée
+            </Link>
+            <Link className="btn btn-raised btn-lg" to="search">
+              Rechercher une idée
+            </Link>
           </div>
         </div>
       </div>

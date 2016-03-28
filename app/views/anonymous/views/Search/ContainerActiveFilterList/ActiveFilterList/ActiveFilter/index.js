@@ -19,6 +19,20 @@ export default class Search extends Component {
           <input className="form-control" id={this.props.id}></input>
         </div>
       );
+    } else if (this.props.type === 'Values') {
+      return (
+        <div className="col-sm-9">
+          <select className="form-control" id={this.props.id}>
+            {this.props.values.map((value) => {
+              return (
+                <option key={'option' + this.props.id + value}>
+                  {value}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      );
     }
   }
 

@@ -1,7 +1,7 @@
 'use strict';
 
 import { connect } from 'react-redux';
-import { removeFilter } from '~/actions/Search';
+import { removeFilter, search} from '~/actions/Search';
 import ActiveFilterList from './ActiveFilterList';
 
 const mapStateToProps = (state) => {
@@ -14,6 +14,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onRemoveButtonClick: (id) => {
       dispatch(removeFilter(id));
+    },
+    onSearchClick: (filters) => {
+      dispatch(search(filters));
     }
   };
 };

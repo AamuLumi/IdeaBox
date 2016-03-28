@@ -5,12 +5,12 @@ import ActiveFilter from './ActiveFilter';
 
 class ActiveFilterList extends Component {
   static propTypes = {
-    filters: React.PropTypes.array.isRequired,
+    filters: React.PropTypes.object.isRequired,
     onRemoveButtonClick: React.PropTypes.func.isRequired
   }
 
-  getUIFilters(filters, onRemoveButtonClick) {
-    if (!filters || filters.length === 0) {
+  getUIFilters(filters, onRemoveButtonClick, onSearchClick) {
+    if (!filters.activeFilters || filters.activeFilters.length === 0) {
       return (
         <div className="activeFilters">
           Aucun filtre
@@ -20,18 +20,19 @@ class ActiveFilterList extends Component {
       return (
         <form className="activeFilters form-horizontal">
           <fieldset>
-            {filters.map((filter) => {
+            {filters.activeFilters.map((filter) => {
               return (<ActiveFilter
                 {...filter}
+                key={'activeFilter'+filter.id}
                 onRemoveButtonClick={() => onRemoveButtonClick(filter.id)}/>);
             })}
             <div className="form-group">
               <div className="col-sm-6 col-sm-offset-6">
-                <button type="button" className="btn btn-default">
-                  Cancel
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Submit
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => onSearchClick(this.props.filters.activeFilters)}>
+                  Rechercher
                 </button>
               </div>
             </div>
@@ -44,7 +45,9 @@ class ActiveFilterList extends Component {
   render() {
     return (
       <div className="well bs-component">
-        {this.getUIFilters(this.props.filters, this.props.onRemoveButtonClick)}
+        {this.getUIFilters(this.props.filters,
+          this.props.onRemoveButtonClick,
+          this.props.onSearchClick)}
       </div>
     );
   }

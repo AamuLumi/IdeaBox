@@ -4,52 +4,24 @@ import React, {Component} from 'react';
 import ContainerActiveFilterList from './ContainerActiveFilterList';
 import { connect } from 'react-redux';
 import { addFilter } from '~/actions/Search';
+import SearchResultList from './SearchResultList';
 import './Search.less';
 
 class Search extends Component {
   static propTypes = {
-    filters: React.PropTypes.array.isRequired
+    filters: React.PropTypes.object.isRequired
   }
 
-  state = {
-    'activeFilters': [],
-    'inactiveFilters': [
-      {
-        'name': 'Je suis ...',
-        'type': 'String',
-        'id': 'job'
-      }, {
-        'name': 'Je cherche un projet nommé ...',
-        'type': 'String',
-        'id': 'projectName'
-      }, {
-        'name': 'Le domaine du projet est ...',
-        'type': 'String',
-        'id': 'projectDomain'
-      }, {
-        'name': 'Le projet nécessite un budget ...',
-        'type': 'Values',
-        'values': [
-          'faible', 'moyen', 'élevé'
-        ],
-        'id': 'projectBudget'
-      }, {
-        'name': 'Je veux être ...',
-        'type': 'String',
-        'id': 'jobSearched'
-      }, {
-        'name': 'Le projet a été posté ...',
-        'type': 'Values',
-        'values': [
-          'Moins de 15 jours', 'Moins d\'un mois', 'Moins de trois mois'
-        ],
-        'id': 'projectPosted'
-      }
-    ]
-  };
-
   addFilter(filter) {
-    this.props.dispatch(addFilter(filter));
+    this.props.dispatch(addFilter(filter.id));
+  }
+
+  getResultsComponent(){
+    if (this.props.results && this.props.results.length > 0){
+      return (
+        <SearchResultList results={this.props.results}/>
+      );
+    }
   }
 
   render() {
@@ -58,9 +30,10 @@ class Search extends Component {
         <div className="v-panel-title">
           <h1>Rechercher une idée</h1>
 
-          {this.state.inactiveFilters.map((searchObject) => {
+          {this.props.filters.inactiveFilters.map((searchObject) => {
             return (
               <span
+                key={'btn'+searchObject.id}
                 className="searchTag btn btn-raised btn-xs"
                 onClick={() => this.addFilter(searchObject)}>
                 {searchObject.name}
@@ -69,6 +42,8 @@ class Search extends Component {
           })}
 
           <ContainerActiveFilterList />
+
+        {this.getResultsComponent()}
         </div>
       </div>
     );
@@ -77,6 +52,7 @@ class Search extends Component {
 
 export default connect(
   (state) => ({
-    filters : state.searchFilters
+    filters : state.searchFilters,
+    results : state.searchResults
   })
 )(Search);
