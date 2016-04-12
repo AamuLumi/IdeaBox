@@ -9,6 +9,7 @@ import Store from './reducers';
 
 import Home from './views/anonymous/views/Home';
 import Search from './views/anonymous/views/Search';
+import ProjectDetails from './views/anonymous/views/ProjectDetails';
 
 export default class Root extends Component {
   render() {
@@ -19,6 +20,9 @@ export default class Root extends Component {
 
           </IndexRoute>
           <Route name="search" path="search" component={Search}>
+
+          </Route>
+          <Route name="project" path="project/:id" component={ProjectDetails}>
 
           </Route>
         </Route>

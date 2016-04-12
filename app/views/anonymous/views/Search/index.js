@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import ContainerActiveFilterList from './ContainerActiveFilterList';
 import { connect } from 'react-redux';
 import { addFilter } from '~/actions/Search';
-import SearchResultList from './SearchResultList';
+import ContainerSearchResultList from './ContainerSearchResultList';
 import './Search.less';
 
 class Search extends Component {
@@ -42,8 +42,7 @@ class Search extends Component {
           })}
 
           <ContainerActiveFilterList />
-
-        {this.getResultsComponent()}
+          <ContainerSearchResultList />
         </div>
       </div>
     );
@@ -52,7 +51,6 @@ class Search extends Component {
 
 export default connect(
   (state) => ({
-    filters : state.searchFilters,
-    results : state.searchResults
+    filters : state.searchFilters
   })
 )(Search);

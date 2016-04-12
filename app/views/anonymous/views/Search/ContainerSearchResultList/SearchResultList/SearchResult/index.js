@@ -1,4 +1,7 @@
+'use strict';
+
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 import './SearchResult.less';
 
 export default class SearchResult extends Component {
@@ -20,8 +23,7 @@ export default class SearchResult extends Component {
               mood
             </i>&nbsp;
             {this.props.result.currentMembers.length}&nbsp; /&nbsp;
-            {this.props.result.currentMembers.length +
-              this.props.result.requiredJobs.length}
+            {this.props.result.currentMembers.length + this.props.result.requiredJobs.length}
           </div>
         </div>
       </div>
@@ -31,12 +33,14 @@ export default class SearchResult extends Component {
   render() {
     return (
       <div className="v-searchResult">
-        <div className="panel panel-info">
-          {this.getPanelHeading()}
-          <div className="panel-body">
-            {this.props.result.description}
+        <Link to={'/project/' + this.props.result.id}>
+          <div className="panel panel-info">
+            {this.getPanelHeading()}
+            <div className="panel-body">
+              {this.props.result.description}
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     );
   }

@@ -14,7 +14,7 @@ export default [{
   'requiredJobs': [{
     'name': 'Graphiste'
   },{
-    'name': 'Administrateir Système'
+    'name': 'Administrateur Système'
   }],
   'budget': 50,
   'isPrivate': false,

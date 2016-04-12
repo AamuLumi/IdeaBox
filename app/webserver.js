@@ -14,5 +14,5 @@ new WebpackDevServer(webpack(config), {
     console.log(err);
   }
 
-  console.log('Listening at localhost:9910');
+  console.log('Listening at localhost:9940');
 });
