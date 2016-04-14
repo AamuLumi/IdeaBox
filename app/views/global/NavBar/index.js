@@ -16,16 +16,20 @@ export default class NavBar extends Component {
               </div>
               <div className="navbar-collapse">
                 <ul className="nav navbar-nav navbar-right">
-                  <li><Link to='/'>Créer</Link></li>
-                  <li><Link to='search'>Rechercher</Link></li>
+                  <li>
+                    <Link to="/">Créer</Link>
+                  </li>
+                  <li>
+                    <Link to="/search">Rechercher</Link>
+                  </li>
                   <li className="dropdown">
-                    <Link to='#' className="dropdown-toggle" data-toggle="dropdown">
+                    <Link to="#" className="dropdown-toggle" data-toggle="dropdown">
                       Connexion
                       <b className="caret"></b>
                     </Link>
                     <ul className="dropdown-menu">
                       <li>
-                        <Link to='/'>Connexion</Link>
+                        <Link to="/">Connexion</Link>
                       </li>
                     </ul>
                   </li>

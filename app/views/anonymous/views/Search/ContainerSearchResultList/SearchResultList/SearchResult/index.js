@@ -14,13 +14,13 @@ export default class SearchResult extends Component {
         <div className="panel-right">
           <div className="budget">
             <i className="material-icons">
-              euro_symbol
+              &#xE926;
             </i>&nbsp;
             {this.props.result.budget}
           </div>
           <div className="members">
             <i className="material-icons">
-              mood
+              &#xE7F2;
             </i>&nbsp;
             {this.props.result.currentMembers.length}&nbsp; /&nbsp;
             {this.props.result.currentMembers.length + this.props.result.requiredJobs.length}
@@ -37,7 +37,7 @@ export default class SearchResult extends Component {
           <div className="panel panel-info">
             {this.getPanelHeading()}
             <div className="panel-body">
-              {this.props.result.description}
+              {this.props.result.fastDescription}
             </div>
           </div>
         </Link>

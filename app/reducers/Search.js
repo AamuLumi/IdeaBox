@@ -69,6 +69,7 @@ export function searchResults(state = [], action) {
           return [res];
         }
       }
+      console.log('nothing found');
       return [];
     default:
       return state;

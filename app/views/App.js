@@ -13,6 +13,7 @@ export default class App extends Component {
             {this.props.children}
           </div>
         </div>
+        <div className="pageBackground"/>
         <NavBar/>
       </div>
     );

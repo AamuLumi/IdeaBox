@@ -12,8 +12,15 @@ body {
   -webkit-box-sizing:border-box;
 }
 .pageContainer{
+  position: relative;
+  z-index:1;
+  height: 100%;
+  width: 100%;
+  padding: 70px 0 20px 0;
+}
+.pageBackground{
   background-color: @primary-color;
-  position: absolute;
+  position: fixed;
   top:0;
   z-index: 0;
   height: 100%;
