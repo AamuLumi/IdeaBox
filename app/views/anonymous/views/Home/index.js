@@ -19,7 +19,7 @@ export default class Home extends Component {
             </Link>
           </div>
           <div className="row">
-            <Link className="btn btn-raised btn-lg btn-primary" to="/">
+            <Link className="btn btn-raised btn-lg btn-primary" to="createProject">
               Donner une idée
             </Link>
             <Link className="btn btn-raised btn-lg btn-primary" to="search">

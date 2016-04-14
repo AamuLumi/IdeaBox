@@ -1,6 +1,7 @@
 'use strict';
 
 import React, {Component} from 'react';
+import FormField from '~/views/lib/material/FormField';
 import './ActiveFilter.less';
 
 export default class Search extends Component {
@@ -12,43 +13,46 @@ export default class Search extends Component {
     onRemoveButtonClick: React.PropTypes.func.isRequired
   }
 
-  getInput() {
-    if (this.props.type === 'String') {
+  getOptions(){
+    return this.props.values.map((value) => {
       return (
-        <div className="col-sm-9">
-          <input className="form-control" id={this.props.id}></input>
-        </div>
+        <option key={'option' + this.props.id + value}>
+          {value}
+        </option>
       );
-    } else if (this.props.type === 'Values') {
-      return (
-        <div className="col-sm-9">
-          <select className="form-control" id={this.props.id}>
-            {this.props.values.map((value) => {
-              return (
-                <option key={'option' + this.props.id + value}>
-                  {value}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-      );
-    }
+    });
   }
 
   render() {
-    return (
-      <div className="activeFilter form-group">
-        <label
-          htmlFor={this.props.id}
-          className="col-sm-2 control-label">
-          {this.props.name}
-        </label>
-        {this.getInput()}
-        <div
-          className="btn btn-raised btn-danger btn-xs"
-          onClick={this.props.onRemoveButtonClick}>x</div>
-      </div>
-    );
+    if (this.props.type === 'String') {
+      return (
+        <FormField
+          type="text"
+          containerClass="activeFilter"
+          fieldContainerClass="col-sm-9"
+          labelString={this.props.name}
+          labelClass="col-sm-2"
+          id={this.props.id}>
+          <div
+            className="btn btn-raised btn-danger btn-xs"
+            onClick={this.props.onRemoveButtonClick}>x</div>
+        </FormField>
+      );
+    } else if (this.props.type === 'Values') {
+      return (
+        <FormField
+          type="select"
+          containerClass="activeFilter"
+          fieldContainerClass="col-sm-9"
+          labelString={this.props.name}
+          labelClass="col-sm-2"
+          id={this.props.id}
+          options={this.getOptions()}>
+          <div
+            className="btn btn-raised btn-danger btn-xs"
+            onClick={this.props.onRemoveButtonClick}>x</div>
+        </FormField>
+      );
+    }
   }
 }
