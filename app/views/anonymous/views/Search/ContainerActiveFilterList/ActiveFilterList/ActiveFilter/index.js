@@ -13,7 +13,7 @@ export default class Search extends Component {
     onRemoveButtonClick: React.PropTypes.func.isRequired
   }
 
-  getOptions(){
+  getOptions() {
     return this.props.values.map((value) => {
       return (
         <option key={'option' + this.props.id + value}>
@@ -24,6 +24,10 @@ export default class Search extends Component {
   }
 
   render() {
+    let removeButton = <div
+      className="btn btn-raised btn-danger btn-xs"
+      onClick={this.props.onRemoveButtonClick}>x</div>;
+
     if (this.props.type === 'String') {
       return (
         <FormField
@@ -33,9 +37,7 @@ export default class Search extends Component {
           labelString={this.props.name}
           labelClass="col-sm-2"
           id={this.props.id}>
-          <div
-            className="btn btn-raised btn-danger btn-xs"
-            onClick={this.props.onRemoveButtonClick}>x</div>
+          {removeButton}
         </FormField>
       );
     } else if (this.props.type === 'Values') {
@@ -48,9 +50,7 @@ export default class Search extends Component {
           labelClass="col-sm-2"
           id={this.props.id}
           options={this.getOptions()}>
-          <div
-            className="btn btn-raised btn-danger btn-xs"
-            onClick={this.props.onRemoveButtonClick}>x</div>
+          {removeButton}
         </FormField>
       );
     }
